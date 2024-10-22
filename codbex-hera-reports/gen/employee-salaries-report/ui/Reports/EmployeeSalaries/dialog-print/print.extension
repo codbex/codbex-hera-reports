@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-hera-reports-custom-action",
+    "module": "codbex-hera-reports/gen/employee-salaries-report/ui/Reports/EmployeeSalaries/dialog-print/print.js",
+    "description": "Print EmployeeSalaries Report"
+}
