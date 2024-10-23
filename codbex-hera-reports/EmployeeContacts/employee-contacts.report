@@ -1,0 +1,123 @@
+{
+    "name": "EmployeeContacts",
+    "alias": "Employee",
+    "table": "CODBEX_EMPLOYEE",
+    "columns": [
+        {
+            "table": "Employee",
+            "alias": "Name",
+            "name": "EMPLOYEE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Employee",
+            "alias": "Birth date",
+            "name": "EMPLOYEE_BIRTHDATE",
+            "type": "DATE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Employee",
+            "alias": "Personal number",
+            "name": "EMPLOYEE_PERSONALNUMBER",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Employee",
+            "alias": "Iban",
+            "name": "EMPLOYEE_IBAN",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Contact",
+            "alias": "Email",
+            "name": "CONTACT_EMAIL",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Contact",
+            "alias": "Phone Number",
+            "name": "CONTACT_PHONENUMBER",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Country",
+            "alias": "Country",
+            "name": "COUNTRY_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "City",
+            "alias": "City",
+            "name": "CITY_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Contact",
+            "alias": "Address",
+            "name": "CONTACT_ADDRESS",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT Employee.EMPLOYEE_NAME as \"Name\", Employee.EMPLOYEE_BIRTHDATE as \"Birth date\", Employee.EMPLOYEE_PERSONALNUMBER as \"Personal number\", Employee.EMPLOYEE_IBAN as \"Iban\", Contact.CONTACT_EMAIL as \"Email\", Contact.CONTACT_PHONENUMBER as \"Phone Number\", Country.COUNTRY_NAME as \"Country\", City.CITY_NAME as \"City\", Contact.CONTACT_ADDRESS as \"Address\"\nFROM CODBEX_EMPLOYEE as Employee\n  INNER JOIN CODBEX_CONTACT Contact ON Contact.CONTACT_EMPLOYEE=Employee.EMPLOYEE_ID\n  INNER JOIN CODBEX_COUNTRY Country ON Country.COUNTRY_ID=Contact.CONTACT_COUNTRY\n  INNER JOIN CODBEX_CITY City ON City.CITY_ID=Contact.CONTACT_CITY\nWHERE Employee.EMPLOYEE_FIRSTNAME = :employeeName",
+    "joins": [
+        {
+            "alias": "Contact",
+            "name": "CODBEX_CONTACT",
+            "type": "INNER",
+            "condition": "Contact.CONTACT_EMPLOYEE=Employee.EMPLOYEE_ID"
+        },
+        {
+            "alias": "Country",
+            "name": "CODBEX_COUNTRY",
+            "type": "INNER",
+            "condition": "Country.COUNTRY_ID=Contact.CONTACT_COUNTRY"
+        },
+        {
+            "alias": "City",
+            "name": "CODBEX_CITY",
+            "type": "INNER",
+            "condition": "City.CITY_ID=Contact.CONTACT_CITY"
+        }
+    ],
+    "conditions": [
+        {
+            "left": "Employee.EMPLOYEE_FIRSTNAME",
+            "operation": "=",
+            "right": ":employeeName"
+        }
+    ],
+    "parameters": [
+        {
+            "name": "employeeName",
+            "type": "VARCHAR",
+            "initial": "Scarlett"
+        }
+    ]
+}

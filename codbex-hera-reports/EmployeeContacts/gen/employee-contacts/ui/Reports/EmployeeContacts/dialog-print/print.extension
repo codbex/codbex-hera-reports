@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-hera-reports-custom-action",
+    "module": "codbex-hera-reports/gen/employee-contacts/ui/Reports/EmployeeContacts/dialog-print/print.js",
+    "description": "Print EmployeeContacts Report"
+}

@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Employee Contacts",
+  "fileName": "employee-contacts",
+  "genFolderName": "employee-contacts",
+  "extensionPoint": "codbex-hera-reports",
+  "name": "EmployeeContacts",
+  "perspectiveName": "EmployeeContacts",
+  "projectName": "codbex-hera-reports",
+  "workspaceName": "workspace",
+  "filePath": "employee-contacts.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
+}

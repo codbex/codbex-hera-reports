@@ -1,0 +1,5 @@
+{
+    "module": "codbex-hera-reports/gen/employee-contacts/ui/Reports/EmployeeContacts/tile.js",
+    "extensionPoint": "codbex-hera-reports-tile",
+    "description": "codbex-hera-reports - Application Tile"
+}
