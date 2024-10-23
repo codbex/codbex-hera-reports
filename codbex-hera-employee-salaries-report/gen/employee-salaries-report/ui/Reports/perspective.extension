@@ -1,0 +1,5 @@
+{
+    "module": "codbex-hera-employee-salaries-report/gen/employee-salaries-report/ui/Reports/perspective.js",
+    "extensionPoint": "codbex-hera-employee-salaries-report",
+    "description": "codbex-hera-employee-salaries-report - Perspective - Reports"
+}

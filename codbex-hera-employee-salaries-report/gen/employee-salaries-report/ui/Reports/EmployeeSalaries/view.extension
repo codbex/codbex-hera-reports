@@ -1,0 +1,5 @@
+{
+    "module": "codbex-hera-employee-salaries-report/gen/employee-salaries-report/ui/Reports/EmployeeSalaries/view.js",
+    "extensionPoint": "codbex-hera-employee-salaries-report-view",
+    "description": "codbex-hera-employee-salaries-report - Application View"
+}
