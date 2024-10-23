@@ -1,5 +1,0 @@
-{
-    "module": "codbex-hera-reports/gen/employee-salaries-report/ui/Reports/EmployeeSalaries/tile.js",
-    "extensionPoint": "codbex-hera-reports-tile",
-    "description": "codbex-hera-reports - Application Tile"
-}

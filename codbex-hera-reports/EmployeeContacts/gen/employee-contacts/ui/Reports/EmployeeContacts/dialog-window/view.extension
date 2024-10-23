@@ -1,5 +1,0 @@
-{
-    "module": "codbex-hera-reports/gen/employee-contacts/ui/Reports/EmployeeContacts/dialog-window/view.js",
-    "extensionPoint": "codbex-hera-reports-dialog-window",
-    "description": "codbex-hera-reports - Application Dialog Window"
-}

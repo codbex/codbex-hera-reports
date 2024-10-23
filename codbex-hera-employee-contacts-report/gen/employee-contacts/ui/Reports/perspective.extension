@@ -1,0 +1,5 @@
+{
+    "module": "codbex-hera-employee-contacts-report/gen/employee-contacts/ui/Reports/perspective.js",
+    "extensionPoint": "codbex-hera-employee-contacts-report",
+    "description": "codbex-hera-employee-contacts-report - Perspective - Reports"
+}

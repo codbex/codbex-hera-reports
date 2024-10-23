@@ -1,0 +1,5 @@
+{
+    "module": "codbex-hera-employee-contacts-report/gen/employee-contacts/ui/Reports/EmployeeContacts/view.js",
+    "extensionPoint": "codbex-hera-employee-contacts-report-view",
+    "description": "codbex-hera-employee-contacts-report - Application View"
+}
