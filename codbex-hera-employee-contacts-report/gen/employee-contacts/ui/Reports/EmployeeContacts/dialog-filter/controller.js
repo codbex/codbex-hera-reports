@@ -21,8 +21,8 @@ angular.module('page', ["ideUI", "ideView"])
 			const filter = {
 
 			};
-			if (entity.employeeName) {
-				filter.employeeName = entity.employeeName;
+			if (entity.FirstName) {
+				filter.FirstName = entity.FirstName;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

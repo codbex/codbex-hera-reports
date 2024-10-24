@@ -11,7 +11,7 @@ class EmployeeSalariesService {
     public filter(_: any, ctx: any) {
         try {
             const filter: EmployeeSalariesPaginatedFilter = {
-                startdate: ctx.queryParameters.startdate ? new Date(parseInt(ctx.queryParameters.startdate)) : undefined,
+                StartDate: ctx.queryParameters.StartDate ? new Date(parseInt(ctx.queryParameters.StartDate)) : undefined,
                 "$limit": ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 "$offset": ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -26,7 +26,7 @@ class EmployeeSalariesService {
     public count(_: any, ctx: any) {
         try {
             const filter: EmployeeSalariesFilter = {
-                startdate: ctx.queryParameters.startdate ? new Date(parseInt(ctx.queryParameters.startdate)) : undefined,
+                StartDate: ctx.queryParameters.StartDate ? new Date(parseInt(ctx.queryParameters.StartDate)) : undefined,
             };
             return this.repository.count(filter);
         } catch (error: any) {

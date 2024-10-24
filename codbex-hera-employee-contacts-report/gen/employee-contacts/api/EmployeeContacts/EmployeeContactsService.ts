@@ -11,7 +11,7 @@ class EmployeeContactsService {
     public filter(_: any, ctx: any) {
         try {
             const filter: EmployeeContactsPaginatedFilter = {
-                employeeName: ctx.queryParameters.employeeName ? ctx.queryParameters.employeeName : undefined,
+                FirstName: ctx.queryParameters.FirstName ? ctx.queryParameters.FirstName : undefined,
                 "$limit": ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 "$offset": ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -26,7 +26,7 @@ class EmployeeContactsService {
     public count(_: any, ctx: any) {
         try {
             const filter: EmployeeContactsFilter = {
-                employeeName: ctx.queryParameters.employeeName ? ctx.queryParameters.employeeName : undefined,
+                FirstName: ctx.queryParameters.FirstName ? ctx.queryParameters.FirstName : undefined,
             };
             return this.repository.count(filter);
         } catch (error: any) {

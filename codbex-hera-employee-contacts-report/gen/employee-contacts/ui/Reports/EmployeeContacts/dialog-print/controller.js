@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			const filter = {
 			};
-			if (filterEntity.employeeName) {
-				filter.employeeName = filterEntity.employeeName;
+			if (filterEntity.FirstName) {
+				filter.FirstName = filterEntity.FirstName;
 			}
 
             $scope.filter = filter;

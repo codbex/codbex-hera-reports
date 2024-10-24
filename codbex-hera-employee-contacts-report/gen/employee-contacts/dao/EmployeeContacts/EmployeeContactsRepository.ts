@@ -13,7 +13,7 @@ export interface EmployeeContacts {
 }
 
 export interface EmployeeContactsFilter {
-    readonly 'employeeName?': string;
+    readonly 'FirstName?': string;
 }
 
 export interface EmployeeContactsPaginatedFilter extends EmployeeContactsFilter {
@@ -36,16 +36,16 @@ export class EmployeeContactsRepository {
               INNER JOIN CODBEX_CONTACT Contact ON Contact.CONTACT_EMPLOYEE=Employee.EMPLOYEE_ID
               INNER JOIN CODBEX_COUNTRY Country ON Country.COUNTRY_ID=Contact.CONTACT_COUNTRY
               INNER JOIN CODBEX_CITY City ON City.CITY_ID=Contact.CONTACT_CITY
-            WHERE Employee.EMPLOYEE_FIRSTNAME = :employeeName
+            WHERE Employee.EMPLOYEE_FIRSTNAME = :FirstName
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
         `;
 
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
-            name: `employeeName`,
+            name: `FirstName`,
             type: `VARCHAR`,
-            value: filter['employeeName'] !== undefined ?  filter['employeeName'] : `Scarlett`
+            value: filter['FirstName'] !== undefined ?  filter['FirstName'] : `Scarlett`
         });
 
         return Query.executeNamed(sql, parameters, this.datasourceName);
@@ -59,15 +59,15 @@ export class EmployeeContactsRepository {
                   INNER JOIN CODBEX_CONTACT Contact ON Contact.CONTACT_EMPLOYEE=Employee.EMPLOYEE_ID
                   INNER JOIN CODBEX_COUNTRY Country ON Country.COUNTRY_ID=Contact.CONTACT_COUNTRY
                   INNER JOIN CODBEX_CITY City ON City.CITY_ID=Contact.CONTACT_CITY
-                WHERE Employee.EMPLOYEE_FIRSTNAME = :employeeName
+                WHERE Employee.EMPLOYEE_FIRSTNAME = :FirstName
             )
         `;
 
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
-            name: `employeeName`,
+            name: `FirstName`,
             type: `VARCHAR`,
-            value: filter.employeeName !== undefined ?  filter.employeeName : `Scarlett`
+            value: filter.FirstName !== undefined ?  filter.FirstName : `Scarlett`
         });
 
         return Query.executeNamed(sql, parameters, this.datasourceName)[0].REPORT_COUNT;

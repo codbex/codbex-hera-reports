@@ -11,8 +11,8 @@ angular.module('page', ["ideUI", "ideView"])
 
 		let params = ViewParameters.get();
 		if (Object.keys(params).length) {
-			if (params?.entity?.startdate) {
-				params.entity.startdate = new Date(params.entity.startdate);
+			if (params?.entity?.StartDate) {
+				params.entity.StartDate = new Date(params.entity.StartDate);
 			}
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
@@ -24,8 +24,8 @@ angular.module('page', ["ideUI", "ideView"])
 			const filter = {
 
 			};
-			if (entity.startdate) {
-				filter.startdate = entity.startdate?.getTime();
+			if (entity.StartDate) {
+				filter.StartDate = entity.StartDate?.getTime();
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

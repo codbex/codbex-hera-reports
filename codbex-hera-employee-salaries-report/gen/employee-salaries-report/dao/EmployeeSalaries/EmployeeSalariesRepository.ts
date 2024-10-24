@@ -10,7 +10,7 @@ export interface EmployeeSalaries {
 }
 
 export interface EmployeeSalariesFilter {
-    readonly 'startdate?': Date;
+    readonly 'StartDate?': Date;
 }
 
 export interface EmployeeSalariesPaginatedFilter extends EmployeeSalariesFilter {
@@ -32,16 +32,16 @@ export class EmployeeSalariesRepository {
             FROM CODBEX_PAYROLLENTRY as PayrollEntry
               INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
               INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_PAYROLLSTATUS
-            WHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :startdate
+            WHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate
             ${Number.isInteger(filter.$limit) ? ` LIMIT ${filter.$limit}` : ''}
             ${Number.isInteger(filter.$offset) ? ` OFFSET ${filter.$offset}` : ''}
         `;
 
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
-            name: `startdate`,
+            name: `StartDate`,
             type: `DATE`,
-            value: filter['startdate'] !== undefined ?  filter['startdate'] : `2024-11-01`
+            value: filter['StartDate'] !== undefined ?  filter['StartDate'] : `2024-11-01`
         });
 
         return Query.executeNamed(sql, parameters, this.datasourceName);
@@ -54,15 +54,15 @@ export class EmployeeSalariesRepository {
                 FROM CODBEX_PAYROLLENTRY as PayrollEntry
                   INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
                   INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_PAYROLLSTATUS
-                WHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :startdate
+                WHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate
             )
         `;
 
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
-            name: `startdate`,
+            name: `StartDate`,
             type: `DATE`,
-            value: filter.startdate !== undefined ?  filter.startdate : `2024-11-01`
+            value: filter.StartDate !== undefined ?  filter.StartDate : `2024-11-01`
         });
 
         return Query.executeNamed(sql, parameters, this.datasourceName)[0].REPORT_COUNT;

@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			const filter = {
 			};
-			if (filterEntity.startdate) {
-				filter.startdate = new Date(filterEntity.startdate);
+			if (filterEntity.StartDate) {
+				filter.StartDate = new Date(filterEntity.StartDate);
 			}
 
             $scope.filter = filter;
