@@ -1,0 +1,137 @@
+{
+    "name": "OpenJobPositions",
+    "alias": "JobPosition",
+    "table": "CODBEX_JOBPOSITION",
+    "columns": [
+        {
+            "table": "JobPosition",
+            "alias": "Job Position Number",
+            "name": "JOBPOSITION_NUMBER",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Department",
+            "alias": "Department",
+            "name": "DEPARTMENT_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Organization",
+            "alias": "Organization",
+            "name": "ORGANIZATION_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobRole",
+            "alias": "Role",
+            "name": "JOBROLE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobStatus",
+            "alias": "Status",
+            "name": "JOBSTATUS_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobType",
+            "alias": "Type",
+            "name": "JOBTYPE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Team",
+            "alias": "Team",
+            "name": "TEAM_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "Employee",
+            "alias": "Manager",
+            "name": "EMPLOYEE_NAME",
+            "type": "CHARACTER VARYING",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        }
+    ],
+    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Department.DEPARTMENT_NAME as \"Department\", Organization.ORGANIZATION_NAME as \"Organization\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobType.JOBTYPE_NAME as \"Type\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID\n  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT\n  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_JOBROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_JOBSTATUS\n  INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_JOBTYPE\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=JobAssignment.JOBASSIGNMENT_MANAGER\nWHERE JobStatus.JOBSTATUS_NAME = 'Open'",
+    "joins": [
+        {
+            "alias": "JobAssignment",
+            "name": "CODBEX_JOBASSIGNMENT",
+            "type": "INNER",
+            "condition": "JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID"
+        },
+        {
+            "alias": "Department",
+            "name": "CODBEX_DEPARTMENT",
+            "type": "INNER",
+            "condition": "Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT"
+        },
+        {
+            "alias": "Organization",
+            "name": "CODBEX_ORGANIZATION",
+            "type": "INNER",
+            "condition": "Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION"
+        },
+        {
+            "alias": "JobRole",
+            "name": "CODBEX_JOBROLE",
+            "type": "INNER",
+            "condition": "JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_JOBROLE"
+        },
+        {
+            "alias": "JobStatus",
+            "name": "CODBEX_JOBSTATUS",
+            "type": "INNER",
+            "condition": "JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_JOBSTATUS"
+        },
+        {
+            "alias": "JobType",
+            "name": "CODBEX_JOBTYPE",
+            "type": "INNER",
+            "condition": "JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_JOBTYPE"
+        },
+        {
+            "alias": "Team",
+            "name": "CODBEX_TEAM",
+            "type": "INNER",
+            "condition": "Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM"
+        },
+        {
+            "alias": "Employee",
+            "name": "CODBEX_EMPLOYEE",
+            "type": "INNER",
+            "condition": "Employee.EMPLOYEE_ID=JobAssignment.JOBASSIGNMENT_MANAGER"
+        }
+    ],
+    "conditions": [
+        {
+            "left": "JobStatus.JOBSTATUS_NAME",
+            "operation": "=",
+            "right": "'Open'"
+        }
+    ]
+}

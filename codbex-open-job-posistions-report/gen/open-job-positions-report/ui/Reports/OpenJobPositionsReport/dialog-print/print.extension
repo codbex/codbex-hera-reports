@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-open-job-posistions-report-custom-action",
+    "module": "codbex-open-job-posistions-report/gen/open-job-positions-report/ui/Reports/OpenJobPositionsReport/dialog-print/print.js",
+    "description": "Print OpenJobPositionsReport Report"
+}

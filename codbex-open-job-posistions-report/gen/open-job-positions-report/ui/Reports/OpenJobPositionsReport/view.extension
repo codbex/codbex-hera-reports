@@ -1,0 +1,5 @@
+{
+    "module": "codbex-open-job-posistions-report/gen/open-job-positions-report/ui/Reports/OpenJobPositionsReport/view.js",
+    "extensionPoint": "codbex-open-job-posistions-report-view",
+    "description": "codbex-open-job-posistions-report - Application View"
+}

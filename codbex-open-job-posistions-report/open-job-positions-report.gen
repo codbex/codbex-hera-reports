@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com/",
+  "title": "Open job positions report",
+  "fileName": "open-job-positions-report",
+  "genFolderName": "open-job-positions-report",
+  "extensionPoint": "codbex-open-job-posistions-report",
+  "name": "OpenJobPositionsReport",
+  "perspectiveName": "OpenJobPositionsReport",
+  "projectName": "codbex-open-job-posistions-report",
+  "workspaceName": "workspace",
+  "filePath": "open-job-positions-report.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
+}
