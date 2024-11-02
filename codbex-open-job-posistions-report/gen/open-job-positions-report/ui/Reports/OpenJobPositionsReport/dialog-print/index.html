@@ -24,13 +24,13 @@
                 <thead fd-table-header sticky="true">
                     <tr fd-table-row>
 						<th fd-table-header-cell>Job Position Number</th>
-						<th fd-table-header-cell>Department</th>
 						<th fd-table-header-cell>Organization</th>
+						<th fd-table-header-cell>Department</th>
+						<th fd-table-header-cell>Team</th>
+						<th fd-table-header-cell>Manager</th>
 						<th fd-table-header-cell>Role</th>
 						<th fd-table-header-cell>Status</th>
 						<th fd-table-header-cell>Type</th>
-						<th fd-table-header-cell>Team</th>
-						<th fd-table-header-cell>Manager</th>
 						<th fd-table-header-cell>Date opened</th>
                     </tr>
                 </thead>
@@ -40,16 +40,14 @@
                     </tr>
                     <tr fd-table-row hoverable="true" ng-repeat="next in data">
 						<td fd-table-cell hoverable="true" activable="true">{{next['Job Position Number']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['Department']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Organization']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Department']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Team']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Manager']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Role']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Status']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Type']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['Team']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['Manager']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">
-							<fd-input type="date" ng-model="next['Date opened']" ng-readonly="true"></fd-input>
-						</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Date opened']}}</td>
                     </tr>
                 </tbody>
             </table>

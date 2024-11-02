@@ -1,16 +1,16 @@
 import { Query, NamedQueryParameter } from "sdk/db";
 
 export interface PayrollsSummary {
-    readonly 'Net salary': number;
+    readonly 'Employee Name': string;
+    readonly 'Net Salary': number;
     readonly 'Taxes': number;
     readonly 'Start date': Date;
     readonly 'Pay date': Date;
-    readonly 'Name': string;
     readonly 'Status': string;
 }
 
 export interface PayrollsSummaryFilter {
-    readonly 'StartDate?': string;
+    readonly 'StartDate?': Date;
 }
 
 export interface PayrollsSummaryPaginatedFilter extends PayrollsSummaryFilter {
@@ -28,7 +28,7 @@ export class PayrollsSummaryRepository {
 
     public findAll(filter: PayrollsSummaryPaginatedFilter): PayrollsSummary[] {
         const sql = `
-            SELECT PayrollEntry.PAYROLLENTRY_NETSALARY as "Net salary", PayrollEntry.PAYROLLENTRY_TAXES as "Taxes", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay date", Employee.EMPLOYEE_NAME as "Name", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
+            SELECT Employee.EMPLOYEE_NAME as "Employee Name", PayrollEntry.PAYROLLENTRY_NETSALARY as "Net Salary", PayrollEntry.PAYROLLENTRY_TAXES as "Taxes", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
             FROM CODBEX_PAYROLLENTRY as PayrollEntry
               INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
               INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS
@@ -40,7 +40,7 @@ export class PayrollsSummaryRepository {
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
             name: `StartDate`,
-            type: `VARCHAR`,
+            type: `DATE`,
             value: filter['StartDate'] !== undefined ?  filter['StartDate'] : `2024-11-01`
         });
 
@@ -50,7 +50,7 @@ export class PayrollsSummaryRepository {
     public count(filter: PayrollsSummaryFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT PayrollEntry.PAYROLLENTRY_NETSALARY as "Net salary", PayrollEntry.PAYROLLENTRY_TAXES as "Taxes", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay date", Employee.EMPLOYEE_NAME as "Name", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
+                SELECT Employee.EMPLOYEE_NAME as "Employee Name", PayrollEntry.PAYROLLENTRY_NETSALARY as "Net Salary", PayrollEntry.PAYROLLENTRY_TAXES as "Taxes", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
                 FROM CODBEX_PAYROLLENTRY as PayrollEntry
                   INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
                   INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS
@@ -61,7 +61,7 @@ export class PayrollsSummaryRepository {
         const parameters: NamedQueryParameter[] = [];
         parameters.push({
             name: `StartDate`,
-            type: `VARCHAR`,
+            type: `DATE`,
             value: filter.StartDate !== undefined ?  filter.StartDate : `2024-11-01`
         });
 

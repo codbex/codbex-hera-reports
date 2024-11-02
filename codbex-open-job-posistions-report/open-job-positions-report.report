@@ -13,6 +13,15 @@
             "grouping": false
         },
         {
+            "table": "Organization",
+            "alias": "Organization",
+            "name": "ORGANIZATION_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
             "table": "Department",
             "alias": "Department",
             "name": "DEPARTMENT_NAME",
@@ -22,46 +31,10 @@
             "grouping": false
         },
         {
-            "table": "Organization",
-            "alias": "Organization",
-            "name": "ORGANIZATION_NAME",
-            "type": "CHARACTER VARYING",
-            "aggregate": "NONE",
-            "select": true,
-            "grouping": false
-        },
-        {
-            "table": "JobRole",
-            "alias": "Role",
-            "name": "JOBROLE_NAME",
-            "type": "CHARACTER VARYING",
-            "aggregate": "NONE",
-            "select": true,
-            "grouping": false
-        },
-        {
-            "table": "JobStatus",
-            "alias": "Status",
-            "name": "JOBSTATUS_NAME",
-            "type": "CHARACTER VARYING",
-            "aggregate": "NONE",
-            "select": true,
-            "grouping": false
-        },
-        {
-            "table": "JobType",
-            "alias": "Type",
-            "name": "JOBTYPE_NAME",
-            "type": "CHARACTER VARYING",
-            "aggregate": "NONE",
-            "select": true,
-            "grouping": false
-        },
-        {
             "table": "Team",
             "alias": "Team",
             "name": "TEAM_NAME",
-            "type": "CHARACTER VARYING",
+            "type": "VARCHAR",
             "aggregate": "NONE",
             "select": true,
             "grouping": false
@@ -70,7 +43,34 @@
             "table": "Employee",
             "alias": "Manager",
             "name": "EMPLOYEE_NAME",
-            "type": "CHARACTER VARYING",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobRole",
+            "alias": "Role",
+            "name": "JOBROLE_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobStatus",
+            "alias": "Status",
+            "name": "JOBSTATUS_NAME",
+            "type": "VARCHAR",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "JobType",
+            "alias": "Type",
+            "name": "JOBTYPE_NAME",
+            "type": "VARCHAR",
             "aggregate": "NONE",
             "select": true,
             "grouping": false
@@ -79,13 +79,13 @@
             "table": "JobPosition",
             "alias": "Date opened",
             "name": "JOBPOSITION_DATEOPENED",
-            "type": "DATE",
+            "type": "VARCHAR",
             "aggregate": "NONE",
             "select": true,
             "grouping": false
         }
     ],
-    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Department.DEPARTMENT_NAME as \"Department\", Organization.ORGANIZATION_NAME as \"Organization\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobType.JOBTYPE_NAME as \"Type\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\", JobPosition.JOBPOSITION_DATEOPENED as \"Date opened\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID\n  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT\n  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS\n  INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=Team.TEAM_MANAGER\nWHERE JobStatus.JOBSTATUS_NAME = 'Open'",
+    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Organization.ORGANIZATION_NAME as \"Organization\", Department.DEPARTMENT_NAME as \"Department\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobType.JOBTYPE_NAME as \"Type\", JobPosition.JOBPOSITION_DATEOPENED as \"Date opened\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID\n  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT\n  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS\n  INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=Team.TEAM_MANAGER\nWHERE JobStatus.JOBSTATUS_NAME = 'Open'",
     "joins": [
         {
             "alias": "JobAssignment",

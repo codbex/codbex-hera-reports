@@ -42,6 +42,20 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idOrganization" dg-colon="true">Organization</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-input id="idOrganization"
+	                            name="Organization"
+	                            ng-model="entity['Organization']"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="Enter Organization">
+	                        </fd-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDepartment" dg-colon="true">Department</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -56,15 +70,29 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idOrganization" dg-colon="true">Organization</fd-form-label>
+                        	<fd-form-label for="idTeam" dg-colon="true">Team</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-input id="idOrganization"
-	                            name="Organization"
-	                            ng-model="entity['Organization']"
+	                        <fd-input id="idTeam"
+	                            name="Team"
+	                            ng-model="entity['Team']"
 	                            ng-readonly="true"
 	                            type="text"
-	                            placeholder="Enter Organization">
+	                            placeholder="Enter Team">
+	                        </fd-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idManager" dg-colon="true">Manager</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-input id="idManager"
+	                            name="Manager"
+	                            ng-model="entity['Manager']"
+	                            ng-readonly="true"
+	                            type="text"
+	                            placeholder="Enter Manager">
 	                        </fd-input>
 	                    </div>
                     </fd-form-item>
@@ -112,42 +140,15 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTeam" dg-colon="true">Team</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-input id="idTeam"
-	                            name="Team"
-	                            ng-model="entity['Team']"
-	                            ng-readonly="true"
-	                            type="text"
-	                            placeholder="Enter Team">
-	                        </fd-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idManager" dg-colon="true">Manager</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-input id="idManager"
-	                            name="Manager"
-	                            ng-model="entity['Manager']"
-	                            ng-readonly="true"
-	                            type="text"
-	                            placeholder="Enter Manager">
-	                        </fd-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idDate opened" dg-colon="true">Date opened</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--2">
+                        <div class="fd-col fd-col-md--8">
 	                        <fd-input id="idDate opened"
 	                            name="Date opened"
 	                            ng-model="entity['Date opened']"
 	                            ng-readonly="true"
-	                            type="date">
+	                            type="text"
+	                            placeholder="Enter Date opened">
 	                        </fd-input>
 	                    </div>
                     </fd-form-item>

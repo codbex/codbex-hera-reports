@@ -2,14 +2,14 @@ import { Query, NamedQueryParameter } from "sdk/db";
 
 export interface OpenJobPositionsReport {
     readonly 'Job Position Number': string;
-    readonly 'Department': string;
     readonly 'Organization': string;
+    readonly 'Department': string;
+    readonly 'Team': string;
+    readonly 'Manager': string;
     readonly 'Role': string;
     readonly 'Status': string;
     readonly 'Type': string;
-    readonly 'Team': string;
-    readonly 'Manager': string;
-    readonly 'Date opened': Date;
+    readonly 'Date opened': string;
 }
 
 export interface OpenJobPositionsReportFilter {
@@ -30,7 +30,7 @@ export class OpenJobPositionsReportRepository {
 
     public findAll(filter: OpenJobPositionsReportPaginatedFilter): OpenJobPositionsReport[] {
         const sql = `
-            SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Department.DEPARTMENT_NAME as "Department", Organization.ORGANIZATION_NAME as "Organization", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
+            SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Organization.ORGANIZATION_NAME as "Organization", Department.DEPARTMENT_NAME as "Department", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
             FROM CODBEX_JOBPOSITION as JobPosition
               INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID
               INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT
@@ -53,7 +53,7 @@ export class OpenJobPositionsReportRepository {
     public count(filter: OpenJobPositionsReportFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Department.DEPARTMENT_NAME as "Department", Organization.ORGANIZATION_NAME as "Organization", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
+                SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Organization.ORGANIZATION_NAME as "Organization", Department.DEPARTMENT_NAME as "Department", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
                 FROM CODBEX_JOBPOSITION as JobPosition
                   INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID
                   INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT

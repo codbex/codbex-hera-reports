@@ -2,13 +2,13 @@
   "brand": "codbex",
   "brandUrl": "https://www.codbex.com/",
   "title": "Payrolls summary for each Employee",
-  "projectName": "codbex-payrolls-summary-report",
-  "workspaceName": "workspace",
-  "filePath": "payrolls-summary.report",
-  "templateId": "template-application-ui-angular/template/template-report-file.js",
   "fileName": "payrolls-summary",
   "genFolderName": "payrolls-summary",
   "extensionPoint": "codbex-payrolls-summary-report",
   "name": "PayrollsSummary",
-  "perspectiveName": "PayrollsSummary"
+  "perspectiveName": "PayrollsSummary",
+  "projectName": "codbex-payrolls-summary-report",
+  "workspaceName": "workspace",
+  "filePath": "payrolls-summary.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
 }

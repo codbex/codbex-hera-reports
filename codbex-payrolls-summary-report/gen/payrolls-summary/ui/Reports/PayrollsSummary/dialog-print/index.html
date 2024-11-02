@@ -23,11 +23,11 @@
             <table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
                 <thead fd-table-header sticky="true">
                     <tr fd-table-row>
-						<th fd-table-header-cell>Net salary</th>
+						<th fd-table-header-cell>Employee Name</th>
+						<th fd-table-header-cell>Net Salary</th>
 						<th fd-table-header-cell>Taxes</th>
 						<th fd-table-header-cell>Start date</th>
 						<th fd-table-header-cell>Pay date</th>
-						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>Status</th>
                     </tr>
                 </thead>
@@ -36,7 +36,8 @@
                         <td fd-table-cell no-data="true">No data available.</td>
                     </tr>
                     <tr fd-table-row hoverable="true" ng-repeat="next in data">
-						<td fd-table-cell hoverable="true" activable="true">{{next['Net salary']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Employee Name']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">{{next['Net Salary']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Taxes']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next['Start date']" ng-readonly="true"></fd-input>
@@ -44,7 +45,6 @@
 						<td fd-table-cell hoverable="true" activable="true">
 							<fd-input type="date" ng-model="next['Pay date']" ng-readonly="true"></fd-input>
 						</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['Name']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Status']}}</td>
                     </tr>
                 </tbody>

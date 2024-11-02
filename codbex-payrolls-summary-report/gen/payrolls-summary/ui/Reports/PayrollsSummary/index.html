@@ -27,11 +27,11 @@
 			<table fd-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead fd-table-header sticky="true">
 					<tr fd-table-row>
-						<th fd-table-header-cell>Net salary</th>
+						<th fd-table-header-cell>Employee Name</th>
+						<th fd-table-header-cell>Net Salary</th>
 						<th fd-table-header-cell>Taxes</th>
 						<th fd-table-header-cell>Start date</th>
 						<th fd-table-header-cell>Pay date</th>
-						<th fd-table-header-cell>Name</th>
 						<th fd-table-header-cell>Status</th>
 						<th fd-table-header-cell></th>
 					</tr>
@@ -42,11 +42,11 @@
 					</tr>
 					<tr fd-table-row hoverable="true" ng-repeat="next in data"
 						dg-selected="next === selectedEntity" ng-click="selectEntity(next)">
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Net salary']}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Employee Name']}}</td>
+						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Net Salary']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Taxes']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Start date']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Pay date']}}</td>
-						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Name']}}</td>
 						<td fd-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next['Status']}}</td>
 						<td fd-table-cell fit-content="true">
 							<fd-popover>
