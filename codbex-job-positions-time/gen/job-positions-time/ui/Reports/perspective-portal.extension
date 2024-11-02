@@ -1,0 +1,5 @@
+{
+    "module": "codbex-job-positions-time/gen/job-positions-time/ui/Reports/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-job-positions-time - Perspective - Reports"
+}
