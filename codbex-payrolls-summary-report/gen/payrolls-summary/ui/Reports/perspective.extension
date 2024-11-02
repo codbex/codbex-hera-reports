@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls-summary-report/gen/payrolls-summary/ui/Reports/perspective.js",
+    "extensionPoint": "codbex-payrolls-summary-report",
+    "description": "codbex-payrolls-summary-report - Perspective - Reports"
+}

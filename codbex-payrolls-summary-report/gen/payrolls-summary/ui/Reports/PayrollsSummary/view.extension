@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls-summary-report/gen/payrolls-summary/ui/Reports/PayrollsSummary/view.js",
+    "extensionPoint": "codbex-payrolls-summary-report-view",
+    "description": "codbex-payrolls-summary-report - Application View"
+}

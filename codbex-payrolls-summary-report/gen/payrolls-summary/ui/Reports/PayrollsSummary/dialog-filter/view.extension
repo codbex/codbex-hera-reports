@@ -1,0 +1,5 @@
+{
+    "module": "codbex-payrolls-summary-report/gen/payrolls-summary/ui/Reports/PayrollsSummary/dialog-filter/view.js",
+    "extensionPoint": "codbex-payrolls-summary-report-dialog-window",
+    "description": "codbex-payrolls-summary-report - Application Dialog Window"
+}

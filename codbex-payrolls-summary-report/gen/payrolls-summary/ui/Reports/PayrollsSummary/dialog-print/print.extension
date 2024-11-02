@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-payrolls-summary-report-custom-action",
+    "module": "codbex-payrolls-summary-report/gen/payrolls-summary/ui/Reports/PayrollsSummary/dialog-print/print.js",
+    "description": "Print PayrollsSummary Report"
+}
