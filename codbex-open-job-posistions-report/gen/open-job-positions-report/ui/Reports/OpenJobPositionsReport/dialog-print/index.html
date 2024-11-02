@@ -31,6 +31,7 @@
 						<th fd-table-header-cell>Type</th>
 						<th fd-table-header-cell>Team</th>
 						<th fd-table-header-cell>Manager</th>
+						<th fd-table-header-cell>Date opened</th>
                     </tr>
                 </thead>
                 <tbody fd-table-body>
@@ -46,6 +47,9 @@
 						<td fd-table-cell hoverable="true" activable="true">{{next['Type']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Team']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Manager']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next['Date opened']" ng-readonly="true"></fd-input>
+						</td>
                     </tr>
                 </tbody>
             </table>
