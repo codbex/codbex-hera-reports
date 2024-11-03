@@ -85,25 +85,19 @@
             "grouping": false
         }
     ],
-    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Organization.ORGANIZATION_NAME as \"Organization\", Department.DEPARTMENT_NAME as \"Department\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobType.JOBTYPE_NAME as \"Type\", JobPosition.JOBPOSITION_DATEOPENED as \"Date opened\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS\n  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT\n  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS\n  INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=Team.TEAM_MANAGER\nWHERE JobStatus.JOBSTATUS_NAME = 'Open'",
+    "query": "SELECT JobPosition.JOBPOSITION_NUMBER as \"Job Position Number\", Organization.ORGANIZATION_NAME as \"Organization\", Department.DEPARTMENT_NAME as \"Department\", Team.TEAM_NAME as \"Team\", Employee.EMPLOYEE_NAME as \"Manager\", JobRole.JOBROLE_NAME as \"Role\", JobStatus.JOBSTATUS_NAME as \"Status\", JobType.JOBTYPE_NAME as \"Type\", JobPosition.JOBPOSITION_DATEOPENED as \"Date opened\"\nFROM CODBEX_JOBPOSITION as JobPosition\n  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = Team.TEAM_DEPARTMENT\n  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = Team.TEAM_ORGANIZATION\n  INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE\n  INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS\n  INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE\n  INNER JOIN CODBEX_TEAM Team ON Team.TEAM_ID = JobPosition.JOBPOSITION_TEAM\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=Team.TEAM_MANAGER\nWHERE JobStatus.JOBSTATUS_NAME = 'Open'",
     "joins": [
-        {
-            "alias": "JobStatus",
-            "name": "CODBEX_JOBSTATUS",
-            "type": "INNER",
-            "condition": "JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS"
-        },
         {
             "alias": "Department",
             "name": "CODBEX_DEPARTMENT",
             "type": "INNER",
-            "condition": "Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT"
+            "condition": "Department.DEPARTMENT_ID = Team.TEAM_DEPARTMENT"
         },
         {
             "alias": "Organization",
             "name": "CODBEX_ORGANIZATION",
             "type": "INNER",
-            "condition": "Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION"
+            "condition": "Organization.ORGANIZATION_ID = Team.TEAM_ORGANIZATION"
         },
         {
             "alias": "JobRole",

@@ -47,7 +47,9 @@
 						<td fd-table-cell hoverable="true" activable="true">{{next['Role']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Status']}}</td>
 						<td fd-table-cell hoverable="true" activable="true">{{next['Type']}}</td>
-						<td fd-table-cell hoverable="true" activable="true">{{next['Date opened']}}</td>
+						<td fd-table-cell hoverable="true" activable="true">
+							<fd-input type="date" ng-model="next['Date opened']" ng-readonly="true"></fd-input>
+						</td>
                     </tr>
                 </tbody>
             </table>

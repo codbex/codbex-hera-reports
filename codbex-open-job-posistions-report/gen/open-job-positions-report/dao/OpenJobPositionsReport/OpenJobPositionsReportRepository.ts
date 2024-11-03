@@ -9,7 +9,7 @@ export interface OpenJobPositionsReport {
     readonly 'Role': string;
     readonly 'Status': string;
     readonly 'Type': string;
-    readonly 'Date opened': string;
+    readonly 'Date opened': Date;
 }
 
 export interface OpenJobPositionsReportFilter {
@@ -32,9 +32,8 @@ export class OpenJobPositionsReportRepository {
         const sql = `
             SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Organization.ORGANIZATION_NAME as "Organization", Department.DEPARTMENT_NAME as "Department", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
             FROM CODBEX_JOBPOSITION as JobPosition
-              INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID
-              INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT
-              INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION
+              INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = Team.TEAM_DEPARTMENT
+              INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = Team.TEAM_ORGANIZATION
               INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE
               INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS
               INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE
@@ -55,9 +54,8 @@ export class OpenJobPositionsReportRepository {
             SELECT COUNT(*) as REPORT_COUNT FROM (
                 SELECT JobPosition.JOBPOSITION_NUMBER as "Job Position Number", Organization.ORGANIZATION_NAME as "Organization", Department.DEPARTMENT_NAME as "Department", Team.TEAM_NAME as "Team", Employee.EMPLOYEE_NAME as "Manager", JobRole.JOBROLE_NAME as "Role", JobStatus.JOBSTATUS_NAME as "Status", JobType.JOBTYPE_NAME as "Type", JobPosition.JOBPOSITION_DATEOPENED as "Date opened"
                 FROM CODBEX_JOBPOSITION as JobPosition
-                  INNER JOIN CODBEX_JOBASSIGNMENT JobAssignment ON JobAssignment.JOBASSIGNMENT_JOBPOSITION = JobPosition.JOBPOSITION_ID
-                  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = JobAssignment.JOBASSIGNMENT_DEPARTMENT
-                  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = JobAssignment.JOBASSIGNMENT_ORGANIZATION
+                  INNER JOIN CODBEX_DEPARTMENT Department ON Department.DEPARTMENT_ID = Team.TEAM_DEPARTMENT
+                  INNER JOIN CODBEX_ORGANIZATION Organization ON Organization.ORGANIZATION_ID = Team.TEAM_ORGANIZATION
                   INNER JOIN CODBEX_JOBROLE JobRole ON JobRole.JOBROLE_ID = JobPosition.JOBPOSITION_ROLE
                   INNER JOIN CODBEX_JOBSTATUS JobStatus ON JobStatus.JOBSTATUS_ID = JobPosition.JOBPOSITION_STATUS
                   INNER JOIN CODBEX_JOBTYPE JobType ON JobType.JOBTYPE_ID = JobPosition.JOBPOSITION_TYPE

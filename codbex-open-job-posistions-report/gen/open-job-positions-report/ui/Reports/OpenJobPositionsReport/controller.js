@@ -74,6 +74,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 						messageHub.showAlertError("OpenJobPositionsReport", `Unable to list/filter OpenJobPositionsReport: '${response.message}'`);
 						return;
 					}
+
+					response.data.forEach(e => {
+					});
+
 					$scope.data = response.data;
 				});
 			});
