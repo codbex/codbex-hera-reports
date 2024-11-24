@@ -41,6 +41,15 @@
         },
         {
             "table": "PayrollEntry",
+            "alias": "Total",
+            "name": "PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET)",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
             "alias": "Start Date",
             "name": "PAYROLLENTRY_STARTDATE",
             "type": "DATE",
@@ -67,7 +76,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT Employee.EMPLOYEE_NAME as \"Employee Name\", Salary.SALARY_NET as \"Net Salary\", Salary.SALARY_GROSS - SALARY_NET as \"Taxes\", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as \"Bonuses\", PayrollEntry.PAYROLLENTRY_STARTDATE as \"Start Date\", PayrollEntry.PAYROLLENTRY_PAYDATE as \"Pay Date\", PayrollStatus.PAYROLLSTATUS_NAME as \"Status\"\nFROM CODBEX_PAYROLLENTRY as PayrollEntry\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE\n  INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS\n  INNER JOIN CODBEX_SALARY Salary ON Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE\nWHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate",
+    "query": "SELECT Employee.EMPLOYEE_NAME as \"Employee Name\", Salary.SALARY_NET as \"Net Salary\", Salary.SALARY_GROSS - SALARY_NET as \"Taxes\", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as \"Bonuses\", PayrollEntry.PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET) as \"Total\", PayrollEntry.PAYROLLENTRY_STARTDATE as \"Start Date\", PayrollEntry.PAYROLLENTRY_PAYDATE as \"Pay Date\", PayrollStatus.PAYROLLSTATUS_NAME as \"Status\"\nFROM CODBEX_PAYROLLENTRY as PayrollEntry\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE\n  INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS\n  INNER JOIN CODBEX_SALARY Salary ON Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE\nWHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate",
     "joins": [
         {
             "alias": "Employee",

@@ -5,6 +5,7 @@ export interface PayrollsSummary {
     readonly 'Net Salary': number;
     readonly 'Taxes': number;
     readonly 'Bonuses': number;
+    readonly 'Total': number;
     readonly 'Start Date': Date;
     readonly 'Pay Date': Date;
     readonly 'Status': string;
@@ -29,7 +30,7 @@ export class PayrollsSummaryRepository {
 
     public findAll(filter: PayrollsSummaryPaginatedFilter): PayrollsSummary[] {
         const sql = `
-            SELECT Employee.EMPLOYEE_NAME as "Employee Name", Salary.SALARY_NET as "Net Salary", Salary.SALARY_GROSS - SALARY_NET as "Taxes", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as "Bonuses", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start Date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay Date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
+            SELECT Employee.EMPLOYEE_NAME as "Employee Name", Salary.SALARY_NET as "Net Salary", Salary.SALARY_GROSS - SALARY_NET as "Taxes", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as "Bonuses", PayrollEntry.PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET) as "Total", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start Date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay Date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
             FROM CODBEX_PAYROLLENTRY as PayrollEntry
               INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
               INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS
@@ -52,7 +53,7 @@ export class PayrollsSummaryRepository {
     public count(filter: PayrollsSummaryFilter): number {
         const sql = `
             SELECT COUNT(*) as REPORT_COUNT FROM (
-                SELECT Employee.EMPLOYEE_NAME as "Employee Name", Salary.SALARY_NET as "Net Salary", Salary.SALARY_GROSS - SALARY_NET as "Taxes", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as "Bonuses", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start Date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay Date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
+                SELECT Employee.EMPLOYEE_NAME as "Employee Name", Salary.SALARY_NET as "Net Salary", Salary.SALARY_GROSS - SALARY_NET as "Taxes", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as "Bonuses", PayrollEntry.PAYROLLENTRY_AMOUNT - (SALARY_GROSS - SALARY_NET) as "Total", PayrollEntry.PAYROLLENTRY_STARTDATE as "Start Date", PayrollEntry.PAYROLLENTRY_PAYDATE as "Pay Date", PayrollStatus.PAYROLLSTATUS_NAME as "Status"
                 FROM CODBEX_PAYROLLENTRY as PayrollEntry
                   INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE
                   INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS
