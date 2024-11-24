@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-job-positions-time.Reports.JobPositionsTimeToFill';
+		messageHubProvider.eventIdPrefix = 'codbex-job-positions-time-to-fill-report.Reports.JobPositionsTimeToFill';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 

@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-job-positions-time.Reports.JobPositionsTimeToFill';
+		messageHubProvider.eventIdPrefix = 'codbex-job-positions-time-to-fill-report.Reports.JobPositionsTimeToFill';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-job-positions-time/gen/job-positions-time/api/JobPositionsTimeToFill/JobPositionsTimeToFillService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-job-positions-time-to-fill-report/gen/job-positions-time/api/JobPositionsTimeToFill/JobPositionsTimeToFillService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 
@@ -12,7 +12,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.dataLimit = 20;
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-job-positions-time-custom-action').then(function (response) {
+		Extensions.get('dialogWindow', 'codbex-job-positions-time-to-fill-report-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "Reports" && e.view === "JobPositionsTimeToFill" && (e.type === "page" || e.type === undefined));
 			$scope.entityActions = response.filter(e => e.perspective === "Reports" && e.view === "JobPositionsTimeToFill" && e.type === "entity");
 		});

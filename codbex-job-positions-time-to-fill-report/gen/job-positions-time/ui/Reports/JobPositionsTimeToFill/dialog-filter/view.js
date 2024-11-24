@@ -6,7 +6,7 @@
 const viewData = {
     id: "JobPositionsTimeToFill-Report-filter",
     label: "JobPositionsTimeToFill Rerport Filter",
-    link: "/services/web/codbex-job-positions-time/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/dialog-filter/index.html",
+    link: "/services/web/codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/dialog-filter/index.html",
     perspectiveName: "Reports",
 };
 

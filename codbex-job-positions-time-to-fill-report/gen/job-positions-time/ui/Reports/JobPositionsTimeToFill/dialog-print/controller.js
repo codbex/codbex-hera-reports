@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
     .config(["messageHubProvider", function (messageHubProvider) {
-        messageHubProvider.eventIdPrefix = 'codbex-job-positions-time.Reports.JobPositionsTimeToFill';
+        messageHubProvider.eventIdPrefix = 'codbex-job-positions-time-to-fill-report.Reports.JobPositionsTimeToFill';
     }])
     .config(["entityApiProvider", function (entityApiProvider) {
-        entityApiProvider.baseUrl = "/services/ts/codbex-job-positions-time/gen/job-positions-time/api/JobPositionsTimeToFill/JobPositionsTimeToFillService.ts";
+        entityApiProvider.baseUrl = "/services/ts/codbex-job-positions-time-to-fill-report/gen/job-positions-time/api/JobPositionsTimeToFill/JobPositionsTimeToFillService.ts";
     }])
     .controller('PageController', ['$scope', 'messageHub', 'entityApi', 'ViewParameters', function ($scope, messageHub, entityApi, ViewParameters) {
 
@@ -52,7 +52,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
         $scope.loadPage($scope.filter);
 
         window.onafterprint = () => {
-            messageHub.closeDialogWindow("codbex-job-positions-time-Reports-JobPositionsTimeToFill-print");
+            messageHub.closeDialogWindow("codbex-job-positions-time-to-fill-report-Reports-JobPositionsTimeToFill-print");
         }
 
     }]);

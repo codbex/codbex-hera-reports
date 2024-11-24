@@ -13,18 +13,18 @@
             "grouping": false
         },
         {
-            "table": "PayrollEntry",
+            "table": "Salary",
             "alias": "Net Salary",
-            "name": "PAYROLLENTRY_NETSALARY",
+            "name": "SALARY_NET",
             "type": "DOUBLE",
             "aggregate": "NONE",
             "select": true,
             "grouping": false
         },
         {
-            "table": "PayrollEntry",
+            "table": "Salary",
             "alias": "Taxes",
-            "name": "PAYROLLENTRY_TAXES",
+            "name": "SALARY_GROSS - SALARY_NET",
             "type": "DOUBLE",
             "aggregate": "NONE",
             "select": true,
@@ -32,7 +32,16 @@
         },
         {
             "table": "PayrollEntry",
-            "alias": "Start date",
+            "alias": "Bonuses",
+            "name": "PAYROLLENTRY_AMOUNT - SALARY_GROSS",
+            "type": "DOUBLE",
+            "aggregate": "NONE",
+            "select": true,
+            "grouping": false
+        },
+        {
+            "table": "PayrollEntry",
+            "alias": "Start Date",
             "name": "PAYROLLENTRY_STARTDATE",
             "type": "DATE",
             "aggregate": "NONE",
@@ -41,7 +50,7 @@
         },
         {
             "table": "PayrollEntry",
-            "alias": "Pay date",
+            "alias": "Pay Date",
             "name": "PAYROLLENTRY_PAYDATE",
             "type": "DATE",
             "aggregate": "NONE",
@@ -58,7 +67,7 @@
             "grouping": false
         }
     ],
-    "query": "SELECT Employee.EMPLOYEE_NAME as \"Employee Name\", PayrollEntry.PAYROLLENTRY_NETSALARY as \"Net Salary\", PayrollEntry.PAYROLLENTRY_TAXES as \"Taxes\", PayrollEntry.PAYROLLENTRY_STARTDATE as \"Start date\", PayrollEntry.PAYROLLENTRY_PAYDATE as \"Pay date\", PayrollStatus.PAYROLLSTATUS_NAME as \"Status\"\nFROM CODBEX_PAYROLLENTRY as PayrollEntry\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE\n  INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS\nWHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate",
+    "query": "SELECT Employee.EMPLOYEE_NAME as \"Employee Name\", Salary.SALARY_NET as \"Net Salary\", Salary.SALARY_GROSS - SALARY_NET as \"Taxes\", PayrollEntry.PAYROLLENTRY_AMOUNT - SALARY_GROSS as \"Bonuses\", PayrollEntry.PAYROLLENTRY_STARTDATE as \"Start Date\", PayrollEntry.PAYROLLENTRY_PAYDATE as \"Pay Date\", PayrollStatus.PAYROLLSTATUS_NAME as \"Status\"\nFROM CODBEX_PAYROLLENTRY as PayrollEntry\n  INNER JOIN CODBEX_EMPLOYEE Employee ON Employee.EMPLOYEE_ID=PayrollEntry.PAYROLLENTRY_EMPLOYEE\n  INNER JOIN CODBEX_PAYROLLSTATUS PayrollStatus ON PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS\n  INNER JOIN CODBEX_SALARY Salary ON Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE\nWHERE PayrollEntry.PAYROLLENTRY_STARTDATE = :StartDate",
     "joins": [
         {
             "alias": "Employee",
@@ -71,6 +80,12 @@
             "name": "CODBEX_PAYROLLSTATUS",
             "type": "INNER",
             "condition": "PayrollStatus.PAYROLLSTATUS_ID=PayrollEntry.PAYROLLENTRY_STATUS"
+        },
+        {
+            "alias": "Salary",
+            "name": "CODBEX_SALARY",
+            "type": "INNER",
+            "condition": "Salary.SALARY_EMPLOYEE=PayrollEntry.PAYROLLENTRY_EMPLOYEE"
         }
     ],
     "conditions": [

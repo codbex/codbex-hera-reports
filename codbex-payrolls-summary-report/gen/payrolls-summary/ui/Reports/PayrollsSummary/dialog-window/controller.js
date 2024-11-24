@@ -7,11 +7,11 @@ angular.module('page', ["ideUI", "ideView"])
 		if (Object.keys(params).length) {
 			$scope.action = "select";;
 
-			if (params.entity['Start date']) {
-				params.entity['Start date'] = new Date(params.entity['Start date']);
+			if (params.entity['Start Date']) {
+				params.entity['Start Date'] = new Date(params.entity['Start Date']);
 			}
-			if (params.entity['Pay date']) {
-				params.entity['Pay date'] = new Date(params.entity['Pay date']);
+			if (params.entity['Pay Date']) {
+				params.entity['Pay Date'] = new Date(params.entity['Pay Date']);
 			}
 			$scope.entity = params.entity;
 		}

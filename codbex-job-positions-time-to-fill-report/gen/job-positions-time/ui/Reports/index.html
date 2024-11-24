@@ -17,7 +17,7 @@
     </head>
 
     <body dg-embeddable-perspective>
-        <ide-header menu-ext-id="codbex-job-positions-time-menu"></ide-header>
+        <ide-header menu-ext-id="codbex-job-positions-time-to-fill-report-menu"></ide-header>
         <ide-container ng-if="!state.error && !state.isBusy">
             <ide-layout views-layout-model="layoutModel"></ide-layout>
         </ide-container>
@@ -32,7 +32,7 @@
         <script type="text/javascript">
             angular.module('app', ['ngResource', 'ideLayout', 'ideUI', 'ideExtensions'])
                 .constant('branding', {
-                    name: 'Job Positions Time-to-fill',
+                    name: 'Job Positions Time-to-fill Report',
                     brand: 'codbex',
                     brandUrl: 'https://www.codbex.com/',
                     icons: {
@@ -43,9 +43,9 @@
                     logo: '/services/web/ide-branding/images/logo.svg',
                 })
                 .constant('extensionPoint', {
-                    perspectives: 'codbex-job-positions-time',
-                    views: 'codbex-job-positions-time-view',
-                    dialogWindows: 'codbex-job-positions-time-dialog-window'
+                    perspectives: 'codbex-job-positions-time-to-fill-report',
+                    views: 'codbex-job-positions-time-to-fill-report-view',
+                    dialogWindows: 'codbex-job-positions-time-to-fill-report-dialog-window'
                 })
                 .controller('ApplicationController', ['$scope', 'messageHub', 'Extensions', function ($scope, messageHub, Extensions) {
                     $scope.state = {
@@ -56,7 +56,7 @@
                     $scope.layoutModel = {
                         views: []
                     };
-                    Extensions.get('view', 'codbex-job-positions-time-view').then(function (response) {
+                    Extensions.get('view', 'codbex-job-positions-time-to-fill-report-view').then(function (response) {
                         $scope.layoutModel = {
                             views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'Reports').map(e => e.id)
                         };

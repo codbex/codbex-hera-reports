@@ -10,7 +10,7 @@ exports.getTile = function () {
         caption: "Report for entity JobPositionsTimeToFill",
         tooltip: "${tooltip}",
         // icon: "file-o",
-        location: "/services/web/codbex-job-positions-time/gen/job-positions-time/ui/Reports/index.html",
+        location: "/services/web/codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/index.html",
         order: "${menuIndex}",
         groupOrder: "999",
     };

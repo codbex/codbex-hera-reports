@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'codbex-job-positions-time-job-positions-time',
+	id: 'codbex-job-positions-time-to-fill-report-job-positions-time',
 	name: 'Reports',
-	link: '/services/web/codbex-job-positions-time/gen/job-positions-time/ui/Reports/index.html',
+	link: '/services/web/codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/index.html',
 	order: 999,
 	icon: '/services/web/resources/unicons/dashboard.svg',
 };

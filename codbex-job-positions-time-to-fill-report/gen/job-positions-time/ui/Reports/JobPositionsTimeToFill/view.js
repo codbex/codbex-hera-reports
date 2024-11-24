@@ -8,7 +8,7 @@ const viewData = {
     label: "JobPositionsTimeToFill Report",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-job-positions-time/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/index.html",
+    link: "/services/web/codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/index.html",
     perspectiveName: "Reports",
 };
 

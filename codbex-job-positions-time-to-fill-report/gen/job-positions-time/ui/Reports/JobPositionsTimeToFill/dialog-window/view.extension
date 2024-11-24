@@ -1,5 +1,5 @@
 {
-    "module": "codbex-job-positions-time/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/dialog-window/view.js",
-    "extensionPoint": "codbex-job-positions-time-dialog-window",
-    "description": "codbex-job-positions-time - Application Dialog Window"
+    "module": "codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/dialog-window/view.js",
+    "extensionPoint": "codbex-job-positions-time-to-fill-report-dialog-window",
+    "description": "codbex-job-positions-time-to-fill-report - Application Dialog Window"
 }

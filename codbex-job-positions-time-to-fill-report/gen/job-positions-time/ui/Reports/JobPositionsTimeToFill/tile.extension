@@ -1,5 +1,5 @@
 {
-    "module": "codbex-job-positions-time/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/tile.js",
-    "extensionPoint": "codbex-job-positions-time-tile",
-    "description": "codbex-job-positions-time - Application Tile"
+    "module": "codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/tile.js",
+    "extensionPoint": "codbex-job-positions-time-to-fill-report-tile",
+    "description": "codbex-job-positions-time-to-fill-report - Application Tile"
 }

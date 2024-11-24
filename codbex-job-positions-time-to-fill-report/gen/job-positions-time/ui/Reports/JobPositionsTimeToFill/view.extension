@@ -1,5 +1,5 @@
 {
-    "module": "codbex-job-positions-time/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/view.js",
-    "extensionPoint": "codbex-job-positions-time-view",
-    "description": "codbex-job-positions-time - Application View"
+    "module": "codbex-job-positions-time-to-fill-report/gen/job-positions-time/ui/Reports/JobPositionsTimeToFill/view.js",
+    "extensionPoint": "codbex-job-positions-time-to-fill-report-view",
+    "description": "codbex-job-positions-time-to-fill-report - Application View"
 }

@@ -37,11 +37,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
                 }
 
                 response.data.forEach(e => {
-                    if (e['Start date']) {
-                        e['Start date'] = new Date(e['Start date']);
+                    if (e['Start Date']) {
+                        e['Start Date'] = new Date(e['Start Date']);
                     }
-                    if (e['Pay date']) {
-                        e['Pay date'] = new Date(e['Pay date']);
+                    if (e['Pay Date']) {
+                        e['Pay Date'] = new Date(e['Pay Date']);
                     }
                 });
 
