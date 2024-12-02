@@ -1,0 +1,5 @@
+{
+    "module": "codbex-inventory-availability-report/gen/inventory-availabilty/ui/Reports/InventoryAvailability/dialog-window/view.js",
+    "extensionPoint": "codbex-inventory-availability-report-dialog-window",
+    "description": "codbex-inventory-availability-report - Application Dialog Window"
+}

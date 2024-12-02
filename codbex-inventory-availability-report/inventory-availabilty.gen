@@ -1,0 +1,14 @@
+{
+  "brand": "codbex",
+  "brandUrl": "https://www.codbex.com",
+  "title": "Inventory Availability",
+  "fileName": "inventory-availabilty",
+  "genFolderName": "inventory-availabilty",
+  "extensionPoint": "codbex-inventory-availability-report",
+  "name": "InventoryAvailability",
+  "perspectiveName": "InventoryAvailability",
+  "projectName": "codbex-inventory-availability-report",
+  "workspaceName": "workspace",
+  "filePath": "inventory-availabilty.report",
+  "templateId": "template-application-ui-angular/template/template-report-file.js"
+}

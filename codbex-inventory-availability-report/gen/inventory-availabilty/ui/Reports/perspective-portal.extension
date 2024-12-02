@@ -1,0 +1,5 @@
+{
+    "module": "codbex-inventory-availability-report/gen/inventory-availabilty/ui/Reports/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-inventory-availability-report - Perspective - Reports"
+}

@@ -1,0 +1,5 @@
+{
+    "module": "codbex-inventory-availability-report/gen/inventory-availabilty/ui/Reports/InventoryAvailability/tile.js",
+    "extensionPoint": "codbex-inventory-availability-report-tile",
+    "description": "codbex-inventory-availability-report - Application Tile"
+}

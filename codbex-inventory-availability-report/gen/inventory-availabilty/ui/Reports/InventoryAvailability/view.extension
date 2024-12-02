@@ -1,0 +1,5 @@
+{
+    "module": "codbex-inventory-availability-report/gen/inventory-availabilty/ui/Reports/InventoryAvailability/view.js",
+    "extensionPoint": "codbex-inventory-availability-report-view",
+    "description": "codbex-inventory-availability-report - Application View"
+}
